@@ -25,7 +25,7 @@ upper_case_full_names = []
 
 ```
 
-### Answer
+### Solution
 
 ```rb
 
@@ -83,7 +83,7 @@ first_order_for_each_user = []
 
 ```
 
-### Answer
+### Solution
 
 ```rb
 
@@ -156,7 +156,7 @@ coffee_average_per_person = []
 
 ```
 
-### Answer
+### Solution
 
 ```rb
 
@@ -229,7 +229,7 @@ most_expensive_products_by_store = []
 
 ```
 
-### Answer
+### Solution
 
 ```rb
 
