@@ -87,7 +87,10 @@ first_order_for_each_user = []
 
 ```rb
 
-[ {description: "a bike"}, {description: "bees"}, {description: "a MacBook"} ]
+first_order_for_each_user = users.map do |order|
+  "#{order[:orders].first}"
+end
+puts first_order_for_each_user
 ```
 
 ## 3. Find the average amount spent on coffee, per transaction, for each person
@@ -157,11 +160,22 @@ coffee_average_per_person = []
 
 ```rb
 
-[ 
-  {name: "Jawaher", :coffee_average=>5.93}, 
-  {name: "Nader", :coffee_average=>4.43}, 
-  {name: "Samah", :coffee_average=>37.28666666666667} 
-]
+coffee_average_per_person = people.map do |person|
+
+    coffee_sum = []
+    person[:transactions].map do |transaction|
+        if transaction[:type] == 'COFFEE'
+            coffee_sum.push(transaction[:amount])
+        end
+    end
+    
+    { 
+    name: person[:name] , 
+    coffee_average: coffee_sum.reduce(:+) / coffee_sum.length 
+    }
+end
+
+puts coffee_average_per_person
 
 ```
 
@@ -219,11 +233,18 @@ most_expensive_products_by_store = []
 
 ```rb
 
-[ 
-  {store_name: "Jarir", most_expensive_product: { description: "Titanium", price: 9384.33}},
-  {store_name: "Danub", most_expensive_product: { description: "Silver", price: 654.44}},
-  {store_name: "Souq", most_expensive_product: { description: "Sapphire", price: 899.33}}
-]
+most_expensive_products_by_store = stores.map do |store|
+    expensive = store[:products].max_by do |product|
+        product[:price]
+    end  
+
+    {
+       name: store[:store_name] ,
+       price: expensive[:price]
+    }
+end 
+
+puts most_expensive_products_by_store
 ```
 
 # Bonus
