@@ -29,7 +29,10 @@ upper_case_full_names = []
 
 ```rb
 
-[ 'AHMED ALTHAGAFI', 'NORAH ALSHEHRI', 'HANEEN ALGHAMDI' ]
+upper_case_full_names = students.map do |student|
+      full_name = " #{student[:first_name]} #{student[:last_name]} "
+      full_name.upcase
+end
 
 ```
 
